@@ -13749,6 +13749,165 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 5465:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
+
+(__nccwpck_require__(153).config)();
+const fetch = __nccwpck_require__(4429);
+const core = __nccwpck_require__(2186);
+const github = __nccwpck_require__(5438);
+
+async function run() {
+    const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
+    const TENOR_TOKEN = core.getInput('TENOR_TOKE') || process.env.TENOR_TOKEN;
+    const message = core.getInput('message') || 'Thank you!';
+    const searchTerm = core.getInput('searchTerm') || 'thank you';
+  
+    if ( typeof TENOR_TOKEN !== 'string' ) {
+      throw new Error('Invalid TENOR_TOKEN: did you forget to set it in your action config?');
+    }
+  
+    if ( typeof GITHUB_TOKEN !== 'string' ) {
+      throw new Error('Invalid GITHUB_TOKEN: did you forget to set it in your action config?');
+    }
+  
+    const randomPos = Math.round(Math.random() * 1000);
+    const url = `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high`
+  
+    console.log(`Searching Tenor: ${url}`)
+    const response = await fetch(`${url}&key=${TENOR_TOKEN}`);
+    const { results } = await response.json();
+    const gifUrl = results[0].media[0].tinygif.url;
+  
+    console.log(`Found gif from Tenor: ${gifUrl}`);
+  
+    const { context = {} } = github;
+    const { issue } = context.payload;
+  
+    if ( !issue ) {
+      throw new Error('Could not find issue!')
+    }
+  
+    console.log(`Found issue: ${issue.number}`);
+  
+    const octokit = github.getOctokit(GITHUB_TOKEN)
+  
+    await octokit.issues.createComment({
+      ...context.repo,
+      issue_number: issue.number,
+      body: `${message}\n\n<img src="${gifUrl}" alt="${searchTerm}" />`
+    });
+  }
+  
+  run().catch(e => core.setFailed(e.message));
+  
+
+/***/ }),
+
+/***/ 8015:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
+
+(__nccwpck_require__(153).config)();
+const fetch = __nccwpck_require__(4429);
+const core = __nccwpck_require__(2186);
+const github = __nccwpck_require__(5438);
+
+
+async function run() {
+  const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
+  const TENOR_TOKEN = core.getInput('TENOR_TOKEN') || process.env.TENOR_TOKEN;
+  const message = core.getInput('message') || 'Thank you!';
+  const searchTerm = core.getInput('searchTerm') || 'thank you';
+
+  if ( typeof TENOR_TOKEN !== 'string' ) {
+    throw new Error('Invalid TENOR_TOKEN: did you forget to set it in your action config?');
+  }
+
+  if ( typeof GITHUB_TOKEN !== 'string' ) {
+    throw new Error('Invalid GITHUB_TOKEN: did you forget to set it in your action config?');
+  }
+
+  const randomPos = Math.round(Math.random() * 1000);
+  const url = `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high`
+
+  console.log(`Searching Tenor: ${url}`)
+
+  const response = await fetch(`${url}&key=${TENOR_TOKEN}`);
+  const { results } = await response.json();
+  const gifUrl = results[0].media[0].tinygif.url;
+
+  console.log(`Found gif from Tenor: ${gifUrl}`);
+
+  const { context = {} } = github;
+  const { pull_request } = context.payload;
+
+  if ( !pull_request ) {
+    throw new Error('Could not find pull request!')
+  };
+
+  console.log(`Found pull request: ${pull_request.number}`);
+
+  const octokit = github.getOctokit(GITHUB_TOKEN)
+
+  await octokit.issues.createComment({
+    ...context.repo,
+    issue_number: pull_request.number,
+    body: `${message}\n\n<img src="${gifUrl}" alt="${searchTerm}" />`
+  });
+}
+
+run().catch(e => core.setFailed(e.message));
+
+// Issue
+
+async function run() {
+  const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
+  const TENOR_TOKEN = core.getInput('TENOR_TOKE') || process.env.TENOR_TOKEN;
+  const message = core.getInput('message') || 'Thank you!';
+  const searchTerm = core.getInput('searchTerm') || 'thank you';
+
+  if ( typeof TENOR_TOKEN !== 'string' ) {
+    throw new Error('Invalid TENOR_TOKEN: did you forget to set it in your action config?');
+  }
+
+  if ( typeof GITHUB_TOKEN !== 'string' ) {
+    throw new Error('Invalid GITHUB_TOKEN: did you forget to set it in your action config?');
+  }
+
+  const randomPos = Math.round(Math.random() * 1000);
+  const url = `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high`
+
+  console.log(`Searching Tenor: ${url}`)
+  const response = await fetch(`${url}&key=${TENOR_TOKEN}`);
+  const { results } = await response.json();
+  const gifUrl = results[0].media[0].tinygif.url;
+
+  console.log(`Found gif from Tenor: ${gifUrl}`);
+
+  const { context = {} } = github;
+  const { issue } = context.payload;
+
+  if ( !issue ) {
+    throw new Error('Could not find issue!')
+  }
+
+  console.log(`Found issue: ${issue.number}`);
+
+  const octokit = github.getOctokit(GITHUB_TOKEN)
+
+  await octokit.issues.createComment({
+    ...context.repo,
+    issue_number: issue.number,
+    body: `${message}\n\n<img src="${gifUrl}" alt="${searchTerm}" />`
+  });
+}
+
+run().catch(e => core.setFailed(e.message));
+
+
+
+/***/ }),
+
 /***/ 153:
 /***/ ((module) => {
 
@@ -16813,97 +16972,18 @@ const fetch = __nccwpck_require__(4429);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
-// Pull Request
-
-async function run() {
-  const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
-  const TENOR_TOKEN = core.getInput('TENOR_TOKEN') || process.env.TENOR_TOKEN;
-  const message = core.getInput('message') || 'Thank you!';
-  const searchTerm = core.getInput('searchTerm') || 'thank you';
-
-  if ( typeof TENOR_TOKEN !== 'string' ) {
-    throw new Error('Invalid TENOR_TOKEN: did you forget to set it in your action config?');
-  }
-
-  if ( typeof GITHUB_TOKEN !== 'string' ) {
-    throw new Error('Invalid GITHUB_TOKEN: did you forget to set it in your action config?');
-  }
-
-  const randomPos = Math.round(Math.random() * 1000);
-  const url = `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high`
-
-  console.log(`Searching Tenor: ${url}`)
-
-  const response = await fetch(`${url}&key=${TENOR_TOKEN}`);
-  const { results } = await response.json();
-  const gifUrl = results[0].media[0].tinygif.url;
-
-  console.log(`Found gif from Tenor: ${gifUrl}`);
-
-  const { context = {} } = github;
-  const { pull_request } = context.payload;
-
-  if ( !pull_request ) {
-    throw new Error('Could not find pull request!')
-  };
-
-  console.log(`Found pull request: ${pull_request.number}`);
-
-  const octokit = github.getOctokit(GITHUB_TOKEN)
-
-  await octokit.issues.createComment({
-    ...context.repo,
-    issue_number: pull_request.number,
-    body: `${message}\n\n<img src="${gifUrl}" alt="${searchTerm}" />`
-  });
+// If an Issue is created then use the Issue.js File
+if (github.context.payload.issue) {
+  console.log('Issue created');
+  __nccwpck_require__(5465);
 }
 
-run().catch(e => core.setFailed(e.message));
-
-// Issue
-async function run() {
-  const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
-  const TENOR_TOKEN = core.getInput('TENOR_TOKE') || process.env.TENOR_TOKEN;
-  const message = core.getInput('message') || 'Thank you!';
-  const searchTerm = core.getInput('searchTerm') || 'thank you';
-
-  if ( typeof TENOR_TOKEN !== 'string' ) {
-    throw new Error('Invalid TENOR_TOKEN: did you forget to set it in your action config?');
-  }
-
-  if ( typeof GITHUB_TOKEN !== 'string' ) {
-    throw new Error('Invalid GITHUB_TOKEN: did you forget to set it in your action config?');
-  }
-
-  const randomPos = Math.round(Math.random() * 1000);
-  const url = `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&pos=${randomPos}&limit=1&media_filter=minimal&contentfilter=high`
-
-  console.log(`Searching Tenor: ${url}`)
-  const response = await fetch(`${url}&key=${TENOR_TOKEN}`);
-  const { results } = await response.json();
-  const gifUrl = results[0].media[0].tinygif.url;
-
-  console.log(`Found gif from Tenor: ${gifUrl}`);
-
-  const { context = {} } = github;
-  const { issue } = context.payload;
-
-  if ( !issue ) {
-    throw new Error('Could not find issue!')
-  }
-
-  console.log(`Found issue: ${issue.number}`);
-
-  const octokit = github.getOctokit(GITHUB_TOKEN)
-
-  await octokit.issues.createComment({
-    ...context.repo,
-    issue_number: issue.number,
-    body: `${message}\n\n<img src="${gifUrl}" alt="${searchTerm}" />`
-  });
+// If a Pull Request is created then use the Pull Request.js File
+if (github.context.payload.pull_request) {
+  console.log('Pull Request created');
+  __nccwpck_require__(8015);
 }
-
-run().catch(e => core.setFailed(e.message));
+  
 
 
 })();
