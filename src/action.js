@@ -51,6 +51,7 @@ async function run() {
 run().catch(e => core.setFailed(e.message));
 
 // Issue
+
 async function run() {
   const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
   const TENOR_TOKEN = core.getInput('TENOR_TOKE') || process.env.TENOR_TOKEN;
