@@ -3,6 +3,8 @@ author: Wuemeli
 on:
   pull_request:
     types: [opened]
+issue:
+    types: [opened]
 
 jobs:
   test:
