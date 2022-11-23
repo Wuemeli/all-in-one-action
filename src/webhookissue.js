@@ -5,7 +5,6 @@ const core = require('@actions/core');
 
 const webhook = core.getInput('WEBHOOK');
 
-
 if (github.context.payload.issue) {
     console.log('Issue created');
     const issue = github.context.payload.issue;

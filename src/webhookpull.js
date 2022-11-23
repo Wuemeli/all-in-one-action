@@ -1,3 +1,4 @@
+// If an New Pull Request is created then send an Message to the Webhook
 const Axios = require('axios');
 const github = require('@actions/github');
 const core = require('@actions/core');
