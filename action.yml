@@ -1,4 +1,4 @@
-name: 'All-In-One'
+name: 'All-In-One-Action'
 description: 'An Github Action that has everything for your workflow'
 branding:
   icon: 'award'
