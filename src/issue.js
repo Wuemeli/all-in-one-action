@@ -6,7 +6,7 @@ const github = require('@actions/github');
 async function run() {
     const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
     const TENOR_TOKEN = core.getInput('TENOR_TOKE') || process.env.TENOR_TOKEN;
-    const message = core.getInput('message') || 'Thank you!';
+    const message = core.getInput('messageissue') || 'Thank you!';
     const searchTerm = core.getInput('searchTerm') || 'thank you';
   
     if ( typeof TENOR_TOKEN !== 'string' ) {
