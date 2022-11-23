@@ -21,9 +21,6 @@ inputs:
   messageissue:
     description: 'Message that gets sent to Issues'
     default: 'Thank you for submitting a Issue! We will try to review this as soon as we can.'
-  webhookmessage:
-    description: 'Message that gets sent to the webhook'
-    default: 'Thank you for submitting a Issue or Pull Request! We will try to review this as soon as we can.'
   searchTerm:
     description: 'Term that gets search for the Tenor API'
     default: 'Thank you'

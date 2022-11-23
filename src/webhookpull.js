@@ -2,7 +2,7 @@ const Axios = require('axios');
 const github = require('@actions/github');
 const core = require('@actions/core');
 
-const webhook = core.getInput('webhook');
+const webhook = core.getInput('WEBHOOK');
 
 if (github.context.payload.pull_request) {
     console.log('Pull Request created');
