@@ -13,8 +13,8 @@ inputs:
     description: 'Tenor API token'
     required: true
   message:
-    description: 'Message that gets sent to new pull requests'
-    default: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'
+    description: 'Message that gets sent to new pull requests or Issues'
+    default: 'Thank you for submitting! We will try to review this as soon as we can.'
   searchTerm:
     description: 'Term that gets search for the Tenor API'
     default: 'thank you'
