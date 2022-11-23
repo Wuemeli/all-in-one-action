@@ -1,7 +1,8 @@
 name: 'Thank You Action'
 description: 'An Github Action that thanks Peoples '
-icon: 'activity'
-color: 'red'
+branding:
+  icon: 'award'
+  color: 'red'
 author: 'Wuemeli'
 
 inputs:

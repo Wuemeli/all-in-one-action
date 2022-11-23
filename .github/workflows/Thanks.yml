@@ -1,7 +1,5 @@
 name: Thanks 
 author: Wuemeli
-icon: 'activity'
-color: 'red'
 on:
   pull_request:
     types: [opened]
