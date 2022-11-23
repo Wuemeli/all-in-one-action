@@ -6,6 +6,8 @@ on:
     types: [opened]
 issue:
     types: [opened]
+commit:
+    types: [opened]
 
 jobs:
   test:

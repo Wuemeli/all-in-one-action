@@ -16,3 +16,11 @@ if (github.context.payload.pull_request) {
   require('./pull.js');
   require('./webhookpull.js');
 }
+
+// Commits
+
+if (github.context.payload.commits) {
+  console.log('Commit created');
+  require('./webhookcommit.js');
+}
+
