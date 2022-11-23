@@ -11,7 +11,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: Wuemeli/thankyou-action@main
+      - uses: Wuemeli/all-in-one-action@main
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           TENOR_TOKEN: ${{secrets.TENOR_TOKEN}}
