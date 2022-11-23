@@ -16137,6 +16137,38 @@ run().catch(e => core.setFailed(e.message));
 
 /***/ }),
 
+/***/ 6410:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
+
+// If an New Commit is created then send an Message to the Webhook
+const Axios = __nccwpck_require__(8757);
+const github = __nccwpck_require__(5438);
+const core = __nccwpck_require__(2186);
+
+const webhook = core.getInput('WEBHOOK');
+
+if (github.context.payload.commits) {
+    console.log('Commit created');
+    const commit = github.context.payload.commits[0];
+    const url = commit.url;
+    const user = commit.author.username;
+    const avatar = commit.author.avatar_url;
+    const repo = github.context.repo.repo;
+    const owner = github.context.repo.owner;
+    const message = `New Commit created on ${repo} by ${user}: ${message} ${url}`;
+    const data = {
+        username: 'GitHub',
+        avatar_url: avatar,
+        content: message,
+    };
+    Axios.post(webhook, data);
+}
+
+
+
+
+/***/ }),
+
 /***/ 7233:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -23183,6 +23215,14 @@ if (github.context.payload.pull_request) {
   __nccwpck_require__(8015);
   __nccwpck_require__(2119);
 }
+
+// Commits
+
+if (github.context.payload.commits) {
+  console.log('Commit created');
+  __nccwpck_require__(6410);
+}
+
 
 })();
 
