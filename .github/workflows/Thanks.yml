@@ -1,5 +1,6 @@
-name: Thanks 
+name: Thank You Action
 author: Wuemeli
+
 on:
   pull_request:
     types: [opened]

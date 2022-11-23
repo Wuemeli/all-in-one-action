@@ -13,6 +13,11 @@ if (github.context.payload.pull_request) {
   require('./pull.js');
 }
 
+// Check if the Pull Request uses Node.Js and If its True it tests
 
-  
+if (github.context.payload.pull_request) {
+  console.log('Pull Request created');
+  require('./testpull.js');
+}
+
 
