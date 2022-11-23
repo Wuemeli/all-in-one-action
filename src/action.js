@@ -1,16 +1,18 @@
 require('dotenv').config();
 const github = require('@actions/github');
 
-// If an Issue is created then use the Issue.js File
+// Issue
+
 if (github.context.payload.issue) {
   console.log('Issue created');
   require('./issue.js');
+  require('./webhookissue.js');
 }
 
-// If a Pull Request is created then use the Pull Request.js File
+// Pull Request
+
 if (github.context.payload.pull_request) {
   console.log('Pull Request created');
   require('./pull.js');
+  require('./webhookpull.js');
 }
-
-

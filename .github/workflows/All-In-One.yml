@@ -1,4 +1,4 @@
-name: Thank You Action
+name: All-In-One
 author: Wuemeli
 
 on:
@@ -15,3 +15,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           TENOR_TOKEN: ${{secrets.TENOR_TOKEN}}
+          WEBHOOK: ${{secrets.WEBHOOK}}

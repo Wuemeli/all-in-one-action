@@ -1,5 +1,5 @@
-name: 'Thank You Action'
-description: 'An Github Action that thanks Peoples '
+name: 'All-In-One'
+description: 'An Github Action that has everything for your workflow'
 branding:
   icon: 'award'
   color: 'red'
@@ -12,15 +12,21 @@ inputs:
   TENOR_TOKEN:
     description: 'Tenor API token'
     required: true
+  WEBHOOK:
+    description: 'Webhook URL'
+    required: true
   messagepull:
     description: 'Message that gets sent to new pull requests'
     default: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'
   messageissue:
     description: 'Message that gets sent to Issues'
     default: 'Thank you for submitting a Issue! We will try to review this as soon as we can.'
+  webhookmessage:
+    description: 'Message that gets sent to the webhook'
+    default: 'Thank you for submitting a Issue or Pull Request! We will try to review this as soon as we can.'
   searchTerm:
     description: 'Term that gets search for the Tenor API'
-    default: 'thank you'
+    default: 'Thank you'
 
 runs:
   using: 'node12'
