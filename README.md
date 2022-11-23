@@ -7,3 +7,4 @@ Create an new File in your .github/workflows Folder. And paste this Content: htt
 Then Get your Tenor API Key here: https://tenor.com/gifapi/documentation
 
 Then go to the Repo Secrets and Create an New one with the Name: TENOR_TOKEN and Paste your Tenor Api Key there.
+
