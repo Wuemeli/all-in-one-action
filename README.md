@@ -25,6 +25,5 @@ Then you are ready to go!
 - [ ] Add an Option to disable the Thanks Message Gif
 - [ ] Add an Option to disable the Thanks Message Text
 - [ ] Add an Option to disable the Commit Message
-- [ ] Add the Commit Message to the Webhook
 
 
