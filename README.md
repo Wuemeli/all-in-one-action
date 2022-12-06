@@ -13,17 +13,7 @@ Then Get your Tenor API Key here: https://tenor.com/gifapi/documentation
 
 Then go to the Repo Secrets and Create an New one with the Name: TENOR_TOKEN and Paste your Tenor Api Key there.
 Then Create an new one with the Name: GITHUB_TOKEN and Paste your Github Token there.
-Then Create an new one with the Name: WEBHOOK_ and Paste your Webhook Url there.
+Then Create an new one with the Name: WEBHOOK and Paste your Webhook Url there.
+Currently there is no Config Avalaibly if you dont want to use an Feature then just remove the Secret Part of the Feature
 
 Then you are ready to go!
-
-// ToDO
-
-- [ ] Add an Option to disable the Webhook
-- [ ] Add an Option to disable the Gif
-- [ ] Add an Option to disable the Thanks Message
-- [ ] Add an Option to disable the Thanks Message Gif
-- [ ] Add an Option to disable the Thanks Message Text
-- [ ] Add an Option to disable the Commit Message
-
-
