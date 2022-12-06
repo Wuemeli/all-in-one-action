@@ -7,7 +7,11 @@ Features:
 - Notifies when an Commit is pushed over an Webhook
 
 How to install:
-Create an new File in your .github/workflows Folder. And paste this Content: All-In-One.yml
+Create an new File in your .github/workflows Folder. And paste this Content:
+
+```yaml
+https://raw.githubusercontent.com/Wuemeli/all-in-one-action/main/.github/workflows/All-In-One-Action.yml
+```
 
 Then Get your Tenor API Key here: https://tenor.com/gifapi/documentation
 
