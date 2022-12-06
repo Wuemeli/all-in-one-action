@@ -4,9 +4,9 @@ author: Wuemeli
 on:
   pull_request:
     types: [opened]
-issue:
+  issue:
     types: [opened]
-commit:
+  commit:
     types: [opened]
 
 jobs:
